@@ -52,9 +52,6 @@ form1.addEventListener('submit',function(event){
     ul.appendChild(newLi);
 
 })
-
-
-
 // Show the fruit description in italics on the next line
 
 

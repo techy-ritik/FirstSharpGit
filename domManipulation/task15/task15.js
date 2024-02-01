@@ -21,6 +21,8 @@ function handleFormSubmit(event){
     const newLi=document.createElement('li');
     newLi.className='user';
 
+    // newLi.innerText=`${newUser_deserialized.username} ${newUser_deserialized.email} ${newUser_deserialized.phone}`;
+
     const para=document.createElement('p');
     const paraText=document.createTextNode(newUser_deserialized.username);
     para.appendChild(paraText);
@@ -41,7 +43,8 @@ function handleFormSubmit(event){
     btn.appendChild(btnText);
     btn.type='delete';
     btn.className='delete-btn';
-    btn.onclick=deleteDetails;
+    // btn.onclick=deleteDetails;
+    btn.addEventListener('click',deleteDetails);
     newLi.appendChild(btn);
 
     ul.appendChild(newLi);

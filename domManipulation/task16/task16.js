@@ -20,6 +20,9 @@ function handleFormSubmit(event){
     const newLi=document.createElement('li');
     newLi.className='user';
 
+
+    // newLi.innerText=`${newUser_deserialized.username} ${newUser_deserialized.email} ${newUser_deserialized.phone}`;
+    
     const para=document.createElement('p');
     const paraText=document.createTextNode(newUser_deserialized.username);
     para.appendChild(paraText);
@@ -34,13 +37,15 @@ function handleFormSubmit(event){
     const para2Text=document.createTextNode(newUser_deserialized.phone);
     para2.appendChild(para2Text);
     newLi.appendChild(para2);
+    
 
     btn=document.createElement('button');
     const btnText=document.createTextNode('delete');
     btn.appendChild(btnText);
     btn.type='delete';
     btn.className='delete-btn';
-    btn.onclick=deleteDetails;
+    btn.addEventListener('click',deleteDetails);
+    // btn.onclick=deleteDetails;
     newLi.appendChild(btn);
 
     editBtn=document.createElement('button');
@@ -48,7 +53,8 @@ function handleFormSubmit(event){
     editBtn.appendChild(editBtnText);
     editBtn.type='edit';
     editBtn.className='edit-btn';
-    editBtn.onclick=editDetails;
+    editBtn.addEventListener('click',editDetails);
+    // editBtn.onclick=editDetails;
     newLi.appendChild(editBtn);
 
     ul.appendChild(newLi);
