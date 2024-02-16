@@ -12,3 +12,5 @@ function planTrip(){
     // callback();
 }
 buyBike(planTrip);
+
+
