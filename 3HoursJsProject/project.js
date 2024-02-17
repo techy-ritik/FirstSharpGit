@@ -36,12 +36,12 @@ addExpenseForm.addEventListener("submit", function (event) {
   // descShow.appendChild(descShowText);
   // newLi.appendChild(descShow);
 
-  // newLi.innerHTML = `${xpense_deserial.amount} - ${xpense_deserial.category} - ${xpense_deserial.description} `;
+  newLi.innerHTML = `${xpense_deserial.amount}-${xpense_deserial.category}-${xpense_deserial.description}-`;
 
-  newLi.innerHTML = "<p></p> <p></p> <p></p>";
-  newLi.children[0].innerText = `${xpense_deserial.amount}`;
-  newLi.children[1].innerText = `${xpense_deserial.category}`;
-  newLi.children[2].innerText = `${xpense_deserial.description}`;
+  // newLi.innerHTML = "<div></div> <div></div> <div></div>";
+  // newLi.children[0].innerText = `${xpense_deserial.amount}`;
+  // newLi.children[1].innerText = `${xpense_deserial.category}`;
+  // newLi.children[2].innerText = `${xpense_deserial.description}`;
 
   const deleteBtn = document.createElement("button");
   const deleteBtnText = document.createTextNode("Delete Expense");
@@ -59,21 +59,24 @@ addExpenseForm.addEventListener("submit", function (event) {
 ul.addEventListener("click", (event) => {
   if (event.target.classList.contains("delete-btn")) {
     const currentDetails = event.target.parentElement;
+    const innerHTMLContent = currentDetails.innerHTML;
+    const childValues = innerHTMLContent.split("-");
     ul.removeChild(currentDetails);
-    localStorage.removeItem(currentDetails.children[1].textContent);
+    localStorage.removeItem(childValues[1]);
   }
 });
 
 ul.addEventListener("click", (event) => {
   if (event.target.classList.contains("edit-btn")) {
     const currentDetails = event.target.parentElement;
-    document.getElementById("amount").value =
-      currentDetails.children[0].textContent;
-    document.getElementById("Description").value =
-      currentDetails.children[2].textContent;
-    document.getElementById("category").value =
-      currentDetails.children[1].textContent;
+
+    const innerHTMLContent = currentDetails.innerHTML;
+    const childValues = innerHTMLContent.split("-");
+    document.getElementById("amount").value = childValues[0];
+    document.getElementById("Description").value = childValues[2];
+    document.getElementById("category").value = childValues[1];
+    
     ul.removeChild(currentDetails);
-    localStorage.removeItem(currentDetails.children[1].textContent);
+    localStorage.removeItem(childValues[1]);
   }
 });
